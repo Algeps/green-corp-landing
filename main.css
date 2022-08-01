@@ -49,14 +49,25 @@ button {
 
 .about {
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    padding-top: 115px;
+    justify-content: space-around;
     padding-bottom: 115px;
+    padding-top: 115px;
 
     background: url('img/back.png') no-repeat;
     background-position: center;
     background-size: cover;
+}
+
+.about {
+    position: relative;
+}
+
+.orb-canvas {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
 }
 
 .about__image {
