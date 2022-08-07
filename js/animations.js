@@ -1,5 +1,7 @@
 const INCREASE_NUMBER_ANIMATION_SPEED = 60;
+let animationInited = false;
 
+/*Функции*/
 function increaseNumberAnimationStep(i, element, endNumber) {
     if (i <= endNumber) {
         if (i === endNumber) {
@@ -38,4 +40,17 @@ document.querySelector("#budget").addEventListener('change', function handleSele
     }
 })
 
-initIncreaseNumberAnimation();
+function updateScroll() {
+    const headerClass = document.querySelector("header").classList
+    window.scrollY > 0 ? headerClass.add("header__scrolled") : headerClass.remove("header__scrolled")
+
+    const countElementPosition = document.querySelector(".features__clients-count").offsetTop
+    let windowBottomPosition = window.scrollY + window.innerHeight;
+    if(windowBottomPosition >= countElementPosition && !animationInited) {
+        animationInited = true
+        initIncreaseNumberAnimation()
+    }
+}
+
+/*Выполнение программы*/
+window.addEventListener('scroll', updateScroll)
