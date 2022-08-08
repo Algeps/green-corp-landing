@@ -52,5 +52,22 @@ function updateScroll() {
     }
 }
 
+function addSmoothScroll(link) {
+    link.addEventListener('click', function(e) {
+        e.preventDefault()
+        document.querySelector(link.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        })
+    })    
+}
+
 /*Выполнение программы*/
 window.addEventListener('scroll', updateScroll)
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    addSmoothScroll(link)
+})
+
+document.querySelectorAll('.more-button').forEach(link => {
+    addSmoothScroll(link);
+})
